@@ -1,0 +1,55 @@
+#bg-light {
+    color: rgb(193, 190, 190);
+}
+
+
+nav form {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    }
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(7, 35, 134);
+}
+
+.block {
+    background-color: aqua;
+}
+
+.item {
+    width: 100px;
+}
+
+.container_log{
+height: 100%;
+align-content: center;
+}
+
+.card_log{
+height: 370px;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+background-color: rgba(0,0,0,0.5) !important;
+}
+
+
+
+.login_btn{
+color: black;
+background-color: #FFC312;
+width: 100px;
+}
+
+
+
+
+
+
+
+
