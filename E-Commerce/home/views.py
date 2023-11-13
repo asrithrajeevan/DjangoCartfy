@@ -9,6 +9,7 @@ from django.http import Http404
 
 # @login_required()
 def index(request):
+    print(request.user)
     item_dict = {
         'items' : Product.objects.all
     }
@@ -20,6 +21,7 @@ def index(request):
 
 def add_to_cart(request, product_id):
     try:
+        print('product_id-->>',product_id)
         product = get_object_or_404(Product,pk=product_id)
     except Product.DoesNotExist:
         raise Http404("Product not found....")
@@ -43,7 +45,7 @@ def cart_view(request):
     items = len(cart_items)
     for item in cart_items:
         item.total = item.product.product_price * item.quantity 
-        total_price += item.total 
+
 
     return render(request, "cart.html", {"cart_items": cart_items, "total_price": total_price, "lenght" : items})
 

@@ -5,14 +5,15 @@ Cart
 {% endblock %}
 
 {% block content %}
+{% load static %}
 
-<div class="container w-100 p-4 bg-light">
-    <div class="container w-100 p-4 bg-light">
-        <h1>Your Shopping Cart</h1>
+<div class="container w-100 p-4" style="width: 100%;">
+    <div class="container w-100 p-4">
 
         {% if cart_items %}
-            <table class="table">
+            <table class="table table-hover bg-white">
                 <thead>
+                    </tr>
                     <tr>
                         <th>Product</th>
                         <th>Image</th>
@@ -25,12 +26,12 @@ Cart
                 <tbody>
                     {% for item in cart_items %}
                         <tr>
-                            <td>{{ item.product.product_name }}</td>
+                            <td style="padding-top: 4%;">{{ item.product.product_name }}</td>
                             <td><img src="{{ item.product.product_image.url }}" alt="{{ item.product.product_name }}" width="100" height="100"></td>
-                            <td>{{ item.quantity }}</td>
-                            <td>Rs. {{ item.product.product_price }}</td>
-                            <td>Rs. {{ item.total }}</td>
-                            <td>
+                            <td style="padding-top: 4%;">{{ item.quantity }}</td>
+                            <td style="padding-top: 4%;">Rs. {{ item.product.product_price }}</td>
+                            <td style="padding-top: 4%;">Rs. {{ item.total }}</td>
+                            <td style="padding-top: 4%;">
                                 <form action="{% url 'remove_item_from_cart' item.id %}" method="post">
                                     {% csrf_token %}
                                     <input class="btn btn-success" type="submit" value="Remove item">
@@ -39,13 +40,48 @@ Cart
                         </tr>
                     {% endfor %}
                 </tbody>
+            </table><br><br>
+            <table>
+                <tr>
+                    <th>
+                        <p>Total items: Rs. {{ lenght }}</p>
+                    </th>
+                    <th>
+                        <p>Total Price: Rs. {{ total_price }}</p>
+                    </th>
+                </tr>
             </table>
-            <p>Total Price: Rs. {{ total_price }}</p>
-            <p>Total items: Rs. {{ lenght }}</p>
+
         {% else %}
-            <p>Your cart is empty.</p>
+        <div class="center">
+            <img src="{% static '/images/EmptyCart.jpg'%}" alt="EmptyCart" width="500" height="500" class="center">
+        </div>
         {% endif %}
     </div>
 </div>
 
+<style>
+    td {
+        text-align: center;
+        padding-top: 10px;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+</style>
+
 {% endblock %}
+
+
