@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "home",
+    "payment",
 ]
 
 MIDDLEWARE = [
@@ -135,4 +136,8 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MEDIA_ROOT = BASE_DIR / 'uploads'
-MEDIA_URL = '/media/'  
+MEDIA_URL = '/media/' 
+
+# razorpay
+RAZOR_KEY_ID = 'rzp_test_hxn7oIjrE82yGB'
+RAZOR_KEY_SECRET = 's46gKbC5Mwg796FtziUo4jdT'
