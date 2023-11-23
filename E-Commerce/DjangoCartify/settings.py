@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "home",
     "payment",
+    "razorpay",
 ]
 
 MIDDLEWARE = [
@@ -141,3 +142,5 @@ MEDIA_URL = '/media/'
 # razorpay
 RAZOR_KEY_ID = 'rzp_test_hxn7oIjrE82yGB'
 RAZOR_KEY_SECRET = 's46gKbC5Mwg796FtziUo4jdT'
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY = "same-origin-allow-popups"

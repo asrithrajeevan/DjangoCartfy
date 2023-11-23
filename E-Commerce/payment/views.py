@@ -13,7 +13,7 @@ razorpay_client = razorpay.Client(
 def homepage(request):
     currency = 'INR'
     amount = 20000  # Rs. 200
- 
+    
     # Create a Razorpay Order
     razorpay_order = razorpay_client.order.create(dict(amount=amount,
                                                        currency=currency,
@@ -55,8 +55,10 @@ def paymenthandler(request):
             }
  
             # verify the payment signature.
-            result = razorpay_client.utility.verify_payment_signature(
-                params_dict)
+            result = razorpay_client.utility.verify_payment_signature(params_dict)
+
+            print(params_dict)
+            
             if result is not None:
                 amount = 20000  # Rs. 200
                 try:
@@ -77,7 +79,9 @@ def paymenthandler(request):
         except:
  
             # if we don't find the required parameters in POST data
-            return HttpResponseBadRequest()
+            return render(request, 'payment_callback.html')
     else:
        # if other than POST request is made.
         return HttpResponseBadRequest()
+    
+    return 
